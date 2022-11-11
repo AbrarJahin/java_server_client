@@ -22,7 +22,7 @@ public class ClientRequest {
 	}
 
 	public void makeDemoRequest() {
-		System.out.println( "Loading contents of URL: " + server + ":" + serverPort );
+		//System.out.println( "Loading contents of URL: " + server + ":" + serverPort );
 		try
 		{
 			// Connect to the server
@@ -43,7 +43,7 @@ public class ClientRequest {
 			String line = in.readLine();
 			while( line != null )
 			{
-				System.out.println( line );
+				//System.out.println( line );
 				line = in.readLine();
 			}
 
@@ -81,7 +81,7 @@ public class ClientRequest {
 			String line = in.readLine();
 			while( line != null )
 			{
-				System.out.println( "SErver Response - " + line );
+				//System.out.println( "SErver Response - " + line );
 				line = in.readLine();
 			}
 
@@ -117,7 +117,7 @@ public class ClientRequest {
             String sendMessage = list + "\n";
             bw.write(sendMessage);
             bw.flush();
-            System.out.println("Message sent to the server : "+sendMessage);
+            //System.out.println("Message sent to the server : "+sendMessage);
 
             //Get the return message from the server
             InputStream is = socket.getInputStream();
@@ -125,7 +125,7 @@ public class ClientRequest {
             BufferedReader br = new BufferedReader(isr);
             while (br.readLine() != null) {         
 				String message = br.readLine();
-				System.out.println("Message received from the server : " +message);
+				//System.out.println("Message received from the server : " +message);
 			}
 			try
 			{
@@ -143,7 +143,7 @@ public class ClientRequest {
         finally
         {
             //Closing the socket
-            System.out.println("Request Ended");
+            //System.out.println("Request Ended");
         }
 	}
 }

@@ -31,17 +31,17 @@ public class FileHandler
 		
 		try {
 			String content = getStringFromFile();
-			System.out.println( content );
-			System.out.println( content.length() );
-			System.out.println( "===================================" );
+			//System.out.println( content );
+			//System.out.println( content.length() );
+			//System.out.println( "===================================" );
 			for(int i = 0; i < content.length(); i+=charLenPerRequest) {
 				int startIndex = i;
 				int endIndex = Math.min(content.length()-1, i+charLenPerRequest-1 );
 				String splilttedString = content.substring(startIndex, endIndex);
 				splittedStringList.add(splilttedString);
-				System.out.println("File Portion No : "+i/charLenPerRequest);
+				//System.out.println("File Portion No : "+i/charLenPerRequest);
 			}
-			System.out.println( "===================================" );
+			//System.out.println( "===================================" );
 		}
 		catch(Error e) {
 			e.printStackTrace();

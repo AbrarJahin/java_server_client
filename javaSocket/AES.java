@@ -45,7 +45,7 @@ public class AES {
         } 
         catch (Exception e) 
         {
-            System.out.println("Error while encrypting: " + e.toString());
+            //System.out.println("Error while encrypting: " + e.toString());
         }
         return null;
     }
@@ -62,7 +62,7 @@ public class AES {
         } 
         catch (Exception e) 
         {
-            System.out.println("Error while decrypting: " + e.toString());
+            //System.out.println("Error while decrypting: " + e.toString());
         }
         return null;
     }
