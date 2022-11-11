@@ -11,7 +11,7 @@ public class SocketClient
 		String password;
 		if( args.length < 5 )	//Default values
 		{
-			System.out.println( "Usage: SimpleSocketClientExample <server> <path>; using default server=localhost, port 8080" );
+			//System.out.println( "Usage: SimpleSocketClientExample <server> <path>; using default server=localhost, port 8080" );
 			//System.exit( 0 );
 			server = "localhost";
 			filePath = "D://Education//Academic//Distributed Computing//Assignments//2//java Code//javaSocket//javaSocket//try.txt";
@@ -37,10 +37,12 @@ public class SocketClient
 			if(requestStatus)
 			{
 				successCount+=1;
+
+				if(FailingModel.IsFailed()) successCount-=1;
 			}
 			if(i%100==0)
 			{
-				System.out.println("Success count out of "+i+","+successCount);
+				System.out.println("Success count out of "+i+1+","+successCount);
 			}
 		}
 	}

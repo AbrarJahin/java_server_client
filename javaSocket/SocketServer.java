@@ -44,7 +44,7 @@ public class SocketServer extends Thread
 		{
 			try
 			{
-				System.out.println( "Listening for any connection" );
+				//System.out.println( "Listening for any connection" );
 
 				// Call accept() to receive the next connection
 				Socket socket = serverSocket.accept();
