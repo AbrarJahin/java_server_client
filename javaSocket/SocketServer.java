@@ -2,10 +2,7 @@
 
 package javaSocket;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -66,11 +63,12 @@ public class SocketServer extends Thread
 	public static void main( String[] args )
 	{
 		///////////////////////////////
-		// String userName = "a";
-		// String password = "1";
-		// UserLogin loginCheck = new UserLogin();
-		// boolean ifLoggedIn = loginCheck.checkLogin(userName, password);
-		// System.out.println(ifLoggedIn ? "print true": "print false");
+		//User login done
+		String userName = "a";
+		String password = "1";
+		UserLogin loginCheck = new UserLogin();
+		boolean ifLoggedIn = loginCheck.checkLogin(userName, password);
+		System.out.println(ifLoggedIn ? "print true": "print false");
 		///////////////////////////////
 		int port;
 		if( args.length == 0 )
@@ -89,10 +87,10 @@ public class SocketServer extends Thread
 		SocketServer server = new SocketServer( port );
 		server.startServer();
 
-		// Automatically shutdown in 1 minute
+		// Automatically shutdown in 5 minute
 		try
 		{
-			Thread.sleep( 60000 );
+			Thread.sleep( 300000 );
 		}
 		catch( Exception e )
 		{
