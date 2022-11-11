@@ -13,8 +13,7 @@ public class ServerRequestHandler extends Thread
 		this.socket = socket;
 	}
 
-	@Override
-	public void run()
+	void sendDemoResponse()
 	{
 		try
 		{
@@ -49,5 +48,11 @@ public class ServerRequestHandler extends Thread
 		{
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void run()
+	{
+		sendDemoResponse();
 	}
 }

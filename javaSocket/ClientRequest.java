@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.List;
 
 public class ClientRequest {
 	String server;
@@ -33,6 +34,7 @@ public class ClientRequest {
 			BufferedReader in = new BufferedReader( new InputStreamReader( socket.getInputStream() ) );	//Receive Data
 
 			// Follow the HTTP protocol of GET <path> HTTP/1.0 followed by an empty line
+			// Send 3 strings
 			out.println( "GET " + path + " HTTP/1.000-> Abrar" );
 			out.println( "Next Line" );
 			out.println( "Next Next Line" );
@@ -57,6 +59,43 @@ public class ClientRequest {
 		}
 	}
 
+	public void makeFileSendRequest(String userName, String password, String fileLocation) {
+		System.out.println( "Loading contents of URL: " + server + ":" + serverPort );
+		try
+		{
+			// Connect to the server
+			Socket socket = new Socket( server, serverPort );
+
+			// Create input and output streams to read from and write to the server
+			PrintStream out = new PrintStream( socket.getOutputStream() );	//Send data
+			BufferedReader in = new BufferedReader( new InputStreamReader( socket.getInputStream() ) );	//Receive Data
+
+			// Send 3 strings
+			out.println(userName );
+			out.println( password );
+			FileHandler fileHandler = new FileHandler(fileLocation);
+			List<String> fileStringList = fileHandler.getFileDataAsList();
+			fileStringList.forEach((line) -> out.println( line ));	//Sent all file data
+			out.println();
+
+			// Read data from the server until we finish reading the document
+			String line = in.readLine();
+			while( line != null )
+			{
+				System.out.println( line );
+				line = in.readLine();
+			}
+
+			// Close our streams
+			in.close();
+			out.close();
+			socket.close();
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace();
+		}
+	}
 
 	public void makeMultiLineRequest() {
 		//https://stackoverflow.com/questions/42047834/java-client-server-sending-multiple-strings-over-a-socket-connection
