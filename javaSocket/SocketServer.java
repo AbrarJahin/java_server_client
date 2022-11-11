@@ -73,14 +73,14 @@ public class SocketServer extends Thread
 		int port;
 		if( args.length == 0 )
 		{
-			//System.out.println( "Usage-> localhost:8080" );
+			System.out.println( "Usage-> localhost:8080" );
 			//System.exit( 0 );
 			port = 8080;
 		}
 		else
 		{
 			port = Integer.parseInt( args[ 0 ] );
-			//System.out.println( "Start server on-> localhost:" + port );
+			System.out.println( "Start server on-> localhost:" + port );
 		}
 
 		SocketServer server = new SocketServer( port );

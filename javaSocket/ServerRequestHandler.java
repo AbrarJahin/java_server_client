@@ -48,6 +48,7 @@ public class ServerRequestHandler extends Thread
 			int receiverIndex = 0;
 			String userName="", password="";
 			List<String> splittedStringList = new ArrayList<String>();
+			boolean statusOfUpload = false;
 			while( line != null && line.length() > 0 )
 			{
 				if(receiverIndex==0)	//Username
@@ -75,18 +76,22 @@ public class ServerRequestHandler extends Thread
 				//Read next one
 				line = in.readLine();
 				receiverIndex+=1;
+				statusOfUpload = true;
 			}
 
 			//File can be saved in server from here, as we don't need, I am not saving that in here
 			// FileHandler fileHandler = new FileHandler("");
 			// String fileOutput = fileHandler.getTextFormStringList(splittedStringList);
 			// System.out.println("File Content :\n" + fileOutput);
-
+			out.println( "Server Clock Count: " + connectionClock );
+			out.flush();
 			out.println( "Username: " + userName );
 			out.flush();
 			out.println( "Reversed Password: " + reverseString(password) );
 			out.flush();
 			out.println( "File Received and uploaded with encryption: " + splittedStringList==null ? "Failed" :"Successful" );
+			out.flush();
+			out.println( "File Fully Uploaded: " + statusOfUpload==null ? "Failed" :"Successful" );
 			out.flush();
 			// Close our connection
 			in.close();
