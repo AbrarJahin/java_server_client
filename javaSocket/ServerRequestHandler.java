@@ -32,7 +32,8 @@ public class ServerRequestHandler extends Thread
 			String line = in.readLine();
 			while( line != null && line.length() > 0 )
 			{
-				out.println( "Echo: " + line );
+				//out.println( "Echo: " + line );
+				out.println( "Echo: " + new StringBuilder(line).reverse().toString() );
 				out.flush();
 				line = in.readLine();
 			}
