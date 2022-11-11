@@ -15,6 +15,9 @@ public class UserLogin {
 		_credentials.put("e", "5");
 		_credentials.put("f", "6");
 		_credentials.put("g", "7");
+		_credentials.put("h", "8");
+		_credentials.put("i", "9");
+		_credentials.put("j", "10");
 	}
 
 	public boolean checkLogin(String username, String password) {
