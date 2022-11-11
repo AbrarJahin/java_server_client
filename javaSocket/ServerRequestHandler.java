@@ -5,10 +5,10 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.InputStreamReader;
 
-public class RequestHandler extends Thread
+public class ServerRequestHandler extends Thread
 {
 	private Socket socket;
-	RequestHandler( Socket socket )
+	ServerRequestHandler( Socket socket )
 	{
 		this.socket = socket;
 	}

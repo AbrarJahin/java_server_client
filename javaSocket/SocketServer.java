@@ -44,13 +44,13 @@ public class SocketServer extends Thread
 		{
 			try
 			{
-				System.out.println( "Listening for a connection" );
+				System.out.println( "Listening for any connection" );
 
 				// Call accept() to receive the next connection
 				Socket socket = serverSocket.accept();
 
-				// Pass the socket to the RequestHandler thread for processing
-				RequestHandler requestHandler = new RequestHandler( socket );
+				// Pass the socket to the RequestHandler thread for processing -> multithreaded work
+				ServerRequestHandler requestHandler = new ServerRequestHandler( socket );
 				requestHandler.start();
 			}
 			catch (IOException e)
