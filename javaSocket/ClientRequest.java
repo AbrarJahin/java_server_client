@@ -13,12 +13,11 @@ import java.util.List;
 
 public class ClientRequest {
 	String server;
-	String path;
+	String path = "tryPath/";
 	int serverPort;
-	public ClientRequest(String _server, String _path, int _serverPort)
+	public ClientRequest(String _server, int _serverPort)
 	{
 		this.server = _server;
-		this.path = _path;
 		this.serverPort = _serverPort;
 	}
 
@@ -59,8 +58,8 @@ public class ClientRequest {
 		}
 	}
 
-	public void makeFileSendRequest(String userName, String password, String fileLocation) {
-		System.out.println( "Loading contents of URL: " + server + ":" + serverPort );
+	public boolean makeFileSendRequest(String userName, String password, String fileLocation)
+	{
 		try
 		{
 			// Connect to the server
@@ -75,14 +74,14 @@ public class ClientRequest {
 			out.println( password );
 			FileHandler fileHandler = new FileHandler(fileLocation);
 			List<String> fileStringList = fileHandler.getFileDataAsList();
-			fileStringList.forEach((line) -> out.println( line ));	//Sent all file data
+			fileStringList.forEach((line) -> out.println( AES.encrypt(line) ));	//Sent all file data as encrypted
 			out.println();
 
 			// Read data from the server until we finish reading the document
 			String line = in.readLine();
 			while( line != null )
 			{
-				System.out.println( line );
+				System.out.println( "SErver Response - " + line );
 				line = in.readLine();
 			}
 
@@ -94,7 +93,9 @@ public class ClientRequest {
 		catch( Exception e )
 		{
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 
 	public void makeMultiLineRequest() {

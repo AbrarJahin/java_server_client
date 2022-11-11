@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class FileHandler
 {
+	final int charLenPerRequest = 40;
 	private String fileName;
 
 	public FileHandler(String _filename)
@@ -27,15 +28,20 @@ public class FileHandler
 	public List<String> getFileDataAsList() throws IOException
 	{
 		List<String> splittedStringList = new ArrayList<String>();
-		final int charLenPerRequest = 100;
+		
 		try {
 			String content = getStringFromFile();
+			System.out.println( content );
+			System.out.println( content.length() );
+			System.out.println( "===================================" );
 			for(int i = 0; i < content.length(); i+=charLenPerRequest) {
-				int startIndex = i*charLenPerRequest;
-				int endIndex = Math.min(content.length()-1, (i+1)*charLenPerRequest-1 );
+				int startIndex = i;
+				int endIndex = Math.min(content.length()-1, i+charLenPerRequest-1 );
 				String splilttedString = content.substring(startIndex, endIndex);
 				splittedStringList.add(splilttedString);
+				System.out.println("File Portion No : "+i/charLenPerRequest);
 			}
+			System.out.println( "===================================" );
 		}
 		catch(Error e) {
 			e.printStackTrace();

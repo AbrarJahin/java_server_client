@@ -64,30 +64,29 @@ public class SocketServer extends Thread
 	{
 		///////////////////////////////
 		//User login done
-		String userName = "a";
-		String password = "1";
-		UserLogin loginCheck = new UserLogin();
-		boolean ifLoggedIn = loginCheck.checkLogin(userName, password);
-		System.out.println(ifLoggedIn ? "print true": "print false");
+		// String userName = "a";
+		// String password = "1";
+		// UserLogin loginCheck = new UserLogin();
+		// boolean ifLoggedIn = loginCheck.checkLogin(userName, password);
+		// System.out.println(ifLoggedIn ? "print true": "print false");
 		///////////////////////////////
 		int port;
 		if( args.length == 0 )
 		{
-			System.out.println( "Usage: SimpleSocketServer <port>" );
+			System.out.println( "Usage-> localhost:8080" );
 			//System.exit( 0 );
 			port = 8080;
 		}
 		else
 		{
 			port = Integer.parseInt( args[ 0 ] );
-			System.out.println( "Start server on port: " + port );
+			System.out.println( "Start server on-> localhost:" + port );
 		}
-		
 
 		SocketServer server = new SocketServer( port );
 		server.startServer();
 
-		// Automatically shutdown in 5 minute
+		// Automatically shutdown in 5 minuite
 		try
 		{
 			Thread.sleep( 300000 );
